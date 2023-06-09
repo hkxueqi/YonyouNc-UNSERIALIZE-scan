@@ -6,18 +6,24 @@ by: xueqi
 
 ## 介绍
 漏洞利用很简单，实现方式也很简单，需要注意
-实现的功能：
+
+### 实现的功能：
+
 **1.出网检测**：通过dnslog回显检测存在漏洞的接口
+
 该方式又分为两种方法：cc链中**URLDNS** 和 **执行ping命令**
+
 URLDNS方式不需要判断操作系统，win和linux通用
+
 执行命令的方法 需要判断目标操作系统，而决定增加`cmd /c ping dnslog`或`/bin/sh -c  “ping -c 1 dnslog“` 防止执行失败
 
 **2.不出网检测**：通过执行系统命令写入文本来判断存在漏洞接口
+
 该方式需要判断目标操作系统，而决定增加`cmd /c`或`/bin/sh -c ““` 防止执行失败
 
-详情看使用详解部分
 
 ## 使用说明
+详情看**使用详解**部分
 ```
 optional arguments:
   -h, --help      show this help message and exit
@@ -29,7 +35,7 @@ optional arguments:
 
 ## 注意事项
 
-没有linux环境，未测试，使用写入文本模式 可能会产生错误导致检测失败。
+linux环境未测试，使用写入文本模式（执行命令方法）可能会产生BUG导致检测失败。
 
 dnslog域名最大支持27个字符，程序自动增加 6个字符(5字符子域名加 `.`点号分隔)，最终全长33个字符,不够在前缀补位
 
@@ -56,6 +62,7 @@ dnslog处理格式
 
 ## 使用详解
 
+### 1.dnslog-URLDNS
 1.使用urldns链 ，通过dnslog出网测试。
 
 `python3 YonyouNcScan2.py -u http://172.16.1.200:8000 -d qpnn6a.ceye.io --exp urldns`
@@ -64,8 +71,8 @@ dnslog处理格式
 
 <img width="756" alt="image-20230519155038819" src="https://github.com/hkxueqi/YonyouNc-UNSERIALIZE-scan/assets/42443541/8c1c8650-99aa-44af-abd5-5fc63cd10db5">
 
-
-2.使用cc6链，执行ping命令 通过dnslog回显
+### 2.dnslog-ping
+使用cc6链，执行ping命令 通过dnslog回显
 
 需要指定系统，-e dnswin或 dnslin
 
@@ -73,8 +80,8 @@ dnslog处理格式
 
 <img width="940" alt="image-20230519155210357" src="https://github.com/hkxueqi/YonyouNc-UNSERIALIZE-scan/assets/42443541/e3009fcd-b929-4381-9632-48019b160fd7">
 
-
-2.使用cc6链，执行echo命令 通过重定向符追加到文本至web根目录回显
+### 3.txt文本
+使用cc6链，执行echo命令 通过重定向符追加到文本至web根目录回显
 
 需要指定系统，-e txtwin或 txtlin；txtwin2使用了cc1链
 
