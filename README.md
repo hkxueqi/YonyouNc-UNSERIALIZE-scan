@@ -14,9 +14,10 @@ hw经常遇到yonyou，但公开的工具要么直接忽略反序列化，要么
 然后我就随便google历史漏洞，好家伙，您猜怎么着，收集了二十多条漏洞，有预警过的有1day，还有少量厂商无预警无细节无编号的。搭建环境一测你再猜怎么着？全能用啊！
 
 例如 23年5月份厂商预警的用友nc，nc.message.bs.NCMessageServlet接口，这么个洞，goby在2月就已经有了poc，22年4月就有了补丁更新。
-<img width="335" alt="image" src="https://github.com/hkxueqi/YonyouNc-UNSERIALIZE-scan/assets/42443541/44ea5cd5-6dba-45e5-a83e-e8c9f145bf3b">
 
-不行就趁早洗洗睡吧
+点名批评某几个厂商，不行就趁早洗洗睡吧
+<img width="321" alt="image" src="https://github.com/hkxueqi/YonyouNc-UNSERIALIZE-scan/assets/42443541/03feef43-db8f-4944-9c4f-f68d56cbc455">
+
 
 ### 实现的功能：
 
