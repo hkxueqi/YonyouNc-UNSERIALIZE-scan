@@ -6,6 +6,17 @@ by: xueqi
 
 ## 介绍
 漏洞利用很简单，实现方式也很简单，需要注意
+该工具仅实现漏洞检测功能，由于该类利用简单且危害大，利用工具部分暂不公开。
+
+**吐槽部分：**
+hw经常遇到yonyou，但公开的工具要么直接忽略反序列化，要么就是零星几个poc。
+
+然后我就随便google历史漏洞，好家伙，您猜怎么着，收集了二十多条漏洞，有预警过的有1day，还有少量厂商无预警无细节无编号的。搭建环境一测你再猜怎么着？全能用啊！
+
+例如 23年5月份厂商预警的用友nc，nc.message.bs.NCMessageServlet接口，这么个洞，goby在2月就已经有了poc，22年4月就有了补丁更新。
+<img width="335" alt="image" src="https://github.com/hkxueqi/YonyouNc-UNSERIALIZE-scan/assets/42443541/44ea5cd5-6dba-45e5-a83e-e8c9f145bf3b">
+
+不行就趁早洗洗睡吧
 
 ### 实现的功能：
 
