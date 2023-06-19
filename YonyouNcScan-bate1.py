@@ -4,7 +4,7 @@ import base64
 import os
 import re
 
-pocurl = list(range(20)) 
+pocurl = list(range(18)) 
 pocurl[0]='/servlet/~ic/nc.bs.framework.mx.monitor.MonitorServlet'
 pocurl[1]='/servlet/~ic/MonitorServlet'
 pocurl[2]='/servlet/~uapxbrl/uap.xbrl.persistenceImpl.XbrlPersistenceServlet'
@@ -20,11 +20,9 @@ pocurl[11]='/servlet/~ic/nc.document.pub.fileSystem.servlet.UploadServlet'
 pocurl[12]='/servlet/~ic/nc.document.pub.fileSystem.servlet.DeleteServlet'
 pocurl[13]='/servlet/~ic/com.ufida.zior.console.ActionHandlerServlet'
 pocurl[14]='/servlet/~ic/ShowAlertFileServlet'
-pocurl[15]='/servlet/~~ic/nc.document.pub.fileSystem.servlet.DownloadServlet'
-pocurl[16]='/servlet/~~ic/nc.document.pub.fileSystem.servlet.UploadServlet'
-pocurl[17]='/servlet/~uapss/nc.search.file.parser.FileParserServlet'
-pocurl[18]='/ServiceDispatcherServlet' #jndi，
-pocurl[19]='/service/~baseapp/nc.message.bs.NCMessageServlet'
+pocurl[15]='/servlet/~uapss/nc.search.file.parser.FileParserServlet'
+pocurl[16]='/ServiceDispatcherServlet' #jndi，
+pocurl[17]='/service/~baseapp/nc.message.bs.NCMessageServlet'
 #add api
 
 def logo():
