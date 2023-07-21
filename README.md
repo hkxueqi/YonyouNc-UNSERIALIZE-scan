@@ -3,6 +3,9 @@ Yonyou-UNSERIALIZE,用友NC 反序列化检查工具,批量检测用友NC 反序
 
 yonyouNC 漏洞批量检测工具(无依赖) 
 by: xueqi
+## 已知问题
+NC6.5有特殊字符转义造成命令执行失败
+测试结果：yonyouNC命令执行Bypass测试分享 https://mp.weixin.qq.com/s/WGuz6ZxDim_Vpn6RDrZAnA
 
 ## 前言
 
